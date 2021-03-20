@@ -1,0 +1,20 @@
+{
+  "name": "oasis-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bafbi",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/opus": "^0.3.2",
+    "discord.js": "^12.4.1",
+    "ffmpeg-static": "^4.2.7",
+    "fs": "0.0.1-security",
+    "mongoose": "^5.10.15",
+    "opusscript": "0.0.7",
+    "ytdl-core": "^3.2.2"
+  }
+}

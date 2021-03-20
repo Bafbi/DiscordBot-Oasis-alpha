@@ -1,0 +1,32 @@
+module.exports = {
+    name: 'gay',
+    description: 'I\'m gay ! tadala...',
+    async execute(message) {
+        const { MessageEmbed } = require('discord.js');
+
+        message.channel.bulkDelete(1)
+
+        const gayschlatt = new MessageEmbed()
+
+            .setTitle('Gayschlatt')
+            .setColor("166CB1")
+            .setImage('https://i.ytimg.com/vi/igc9XClqvMM/hq720.jpg?sqp=-oaymwEZCOgCEMoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCqJtPBUca7Njy-ECBS7TKryytMpA')
+            .setURL('https://www.youtube.com/watch?v=igc9XClqvMM');
+
+        message.channel.send(gayschlatt);
+
+        if (!message.guild) return;
+
+        if (message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            const dispatcher = connection.play('./audio/gayschlatt-meme.mp3');
+
+            dispatcher.on('finish', () => {
+                dispatcher.destroy();
+                message.member.voice.channel.leave();
+                
+            });
+        }
+    }
+
+};
