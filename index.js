@@ -1,14 +1,22 @@
 const fs = require('fs');
 const mongoose = require('mongoose');
 const Discord = require('discord.js');
-const Eco = require('./modules/economie');
+const Profils = require('./modules/profil');
 
-const { prefix, token } = require('./config.json');
+const { prefix } = require('./config.json');
+//const { token, mongo_uri } = require('./Pconfig.json');
+
+/*if (process.env.MONGODB_URI || process.env.TOKEN) {
+    const mongo_uri = process.env.MONGODB_URI;
+    const token = process.env.TOKEN;
+}*/
+const token = process.env.TOKEN;
+const mongo_uri = process.env.MONGODB_URI;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
 
-mongoose.connect("mongodb+srv://Bafbi:4c3o8dJcvs0SZnSb@oasisbot.uy5oh.mongodb.net/Oasis(test)?retryWrites=true&w=majority", {useUnifiedTopology: true, useNewUrlParser: true}).then(() => console.log("Mongodb Connecté"));
+mongoose.connect(mongo_uri, {useUnifiedTopology: true, useNewUrlParser: true}).then(() => console.log("Mongodb Connecté"));
 
 const commandDirectory = fs.readdirSync('./commands');
 
@@ -26,7 +34,7 @@ for (const directory of commandDirectory) {
 client.once('ready', () => {
     console.log(`Ready! le préfix est "${prefix}"`);
     //client.channels.fetch('746127737571246161').then(channel => channel.send(`Bot`)).catch(console.error);
-    client.user.setActivity('moi', { type: 'WATCHING' });   
+    client.user.setActivity('lui', { type: 'WATCHING' });   
 });
 
 
@@ -34,7 +42,7 @@ client.once('ready', () => {
 //client.user.setAFK('true');
 
 client.on('message', message => {
-    Eco.profilUpdate(message)
+    Profils.profilUpdate(message.guild.id, message.author.id, message.author.username)
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
         const args = message.content.slice(prefix.length).split(/ +/);

@@ -6,9 +6,7 @@ const ProfilSchema = mongoose.Schema({
     pseudo: String,
     xp: Number,
     level: Number,
-    xpRank: Number,
     balance: Number,
-    moneyRank: Number,
 
 });
 

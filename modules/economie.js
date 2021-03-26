@@ -15,9 +15,9 @@ module.exports = {
                     pseudo: message.author.username,
                     xp: 10,
                     level: 1,
-                    xpRank: 0,
+                    
                     balance: 100,
-                    moneyRank: 10,
+                    
                 })
                 account.save()
             }
