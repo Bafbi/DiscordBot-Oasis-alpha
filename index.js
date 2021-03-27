@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const Profils = require('./modules/profil');
 
 const { prefix } = require('./config.json');
-const { tokenlan, mongo_urilan } = require('./Pconfig.json');
+const { tokenlan, mongo_urilan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : undefined;
 
 const token = (process.env.TOKEN || tokenlan);
 const mongo_uri = (process.env.MONGODB_URI || mongo_urilan);
@@ -38,7 +38,7 @@ client.once('ready', () => {
 //client.user.setAFK('true');
 
 client.on('message', message => {
-    Profils.profilUpdate(message.guild.id, message.author.id, message.author.username)
+    Profils.profilUpdate(message)
     if (!message.content.startsWith(prefix) || message.author.bot) return;
 
         const args = message.content.slice(prefix.length).split(/ +/);
