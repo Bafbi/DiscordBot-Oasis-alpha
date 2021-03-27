@@ -4,14 +4,10 @@ const Discord = require('discord.js');
 const Profils = require('./modules/profil');
 
 const { prefix } = require('./config.json');
-//const { token, mongo_uri } = require('./Pconfig.json');
+const { tokenlan, mongo_urilan } = require('./Pconfig.json');
 
-/*if (process.env.MONGODB_URI || process.env.TOKEN) {
-    const mongo_uri = process.env.MONGODB_URI;
-    const token = process.env.TOKEN;
-}*/
-const token = process.env.TOKEN;
-const mongo_uri = process.env.MONGODB_URI;
+const token = (process.env.TOKEN || tokenlan);
+const mongo_uri = (process.env.MONGODB_URI || mongo_urilan);
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();
