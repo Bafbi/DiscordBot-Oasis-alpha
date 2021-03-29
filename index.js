@@ -4,7 +4,7 @@ const Discord = require('discord.js');
 const Profils = require('./modules/profil');
 
 const { prefix } = require('./config.json');
-const { tokenlan, mongo_urilan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : undefined;
+const { tokenlan, mongo_urilan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : {undefined, undefined};
 
 const token = (process.env.TOKEN || tokenlan);
 const mongo_uri = (process.env.MONGODB_URI || mongo_urilan);
