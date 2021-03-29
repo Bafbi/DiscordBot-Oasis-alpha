@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const Discord = require('discord.js');
 const Profils = require('./modules/profil');
 
-const { prefix } = require('./config.json');
-const { tokenlan, mongo_urilan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : {undefined, undefined};
+const { tokenlan, mongo_urilan, prefixlan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : {undefined, undefined, undefined};
 
-const token = (process.env.TOKEN || tokenlan);
-const mongo_uri = (process.env.MONGODB_URI || mongo_urilan);
+const token = process.env.TOKEN || tokenlan;
+const mongo_uri = process.env.MONGODB_URI || mongo_urilan;
+const prefix = process.env.PREFIX || prefixlan;
 
 const client = new Discord.Client();
 client.commands = new Discord.Collection();

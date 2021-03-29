@@ -13,7 +13,7 @@ module.exports = {
                         color: 0xffd700,
                         title: `balance de ${targetUser.username}`,
                         thumbnail: {
-                            url: message.author.avatarURL({ dynamic: true })
+                            url: targetUser.avatarURL({ dynamic: true })
                         },
                         //description: `--~[ ${profil.balance} $ ]~--`,
                         fields: [
@@ -24,7 +24,7 @@ module.exports = {
                         ],
                         timestamp: new Date(),
                         footer: {
-                            icon_url: targetUser.avatarURL({ dynamic: true }),
+                            icon_url: message.author.avatarURL({ dynamic: true }),
                             text: "&balance"
                         }
                     }
