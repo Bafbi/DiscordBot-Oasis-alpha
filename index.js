@@ -4,7 +4,6 @@ const Discord = require('discord.js');
 const Profils = require('./modules/profil');
 
 const { tokenlan, mongo_urilan, prefixlan } = fs.existsSync('./Pconfig.json') ? require('./Pconfig.json') : {undefined, undefined, undefined};
-
 const token = process.env.TOKEN || tokenlan;
 const mongo_uri = process.env.MONGODB_URI || mongo_urilan;
 const prefix = process.env.PREFIX || prefixlan;
@@ -30,7 +29,7 @@ for (const directory of commandDirectory) {
 client.once('ready', () => {
     console.log(`Ready! le préfix est "${prefix}"`);
     //client.channels.fetch('746127737571246161').then(channel => channel.send(`Bot`)).catch(console.error);
-    client.user.setActivity('lui', { type: 'WATCHING' });   
+    client.user.setActivity(`moi [${prefix}]`, { type: 'WATCHING' });   
 });
 
 
